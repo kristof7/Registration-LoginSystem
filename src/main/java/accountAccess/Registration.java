@@ -5,10 +5,7 @@ import java.util.Scanner;
 public class Registration {
     Scanner scanner = new Scanner(System.in);
     private boolean isTrue = true;
-    private boolean isReturn = false;
-    private boolean isRegistrationValid = true;
     private String isYes = "";
-    private int choose = 1;
 
     // ----------------- Registration methods -----------------
     public void userSetName(User user) {
@@ -88,8 +85,16 @@ public class Registration {
         do {
             try {
                 scanner = new Scanner(System.in);
+                System.out.println("Email is also your login");
                 System.out.println("4. Email: ");
-                String email = scanner.nextLine();
+                String email;
+                do {
+                    email = scanner.nextLine();
+                    if (!Check.checkEmail(email)) {
+                        System.out.println("There is something wrong with your e-mail, remember the writing syntax, try again:");
+                        isTrue = false;
+                    } else isTrue = true;
+                } while (!isTrue);
                 user.setEmail(email);
                 System.out.println(user);
                 System.out.println("Your email is: " + email);
@@ -98,9 +103,10 @@ public class Registration {
                 isYes = scanner.nextLine();
                 if (isYes.equals("n")) {
                     isTrue = false;
-                } else if (isYes.equals("y")) {
+                } else if ((isYes.equals("y") || isYes.equals("Y")) && Check.checkEmail(email)) {
                     isTrue = true;
                 } else isTrue = false;
+                System.out.println("Wrong email");
             } catch (Exception e) {
                 System.out.println("its not valid value");
                 isTrue = false;

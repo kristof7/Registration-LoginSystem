@@ -5,10 +5,10 @@ import com.google.gson.GsonBuilder;
 
 import java.io.*;
 
-public class JsonConverter {
+public class JsonConverterUsers {
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    private static final String jsonUsersFile = "Users";
+    private static final String jsonUsersFile = "src/main/resources/Users";
 
 
     public static void saveUsersToJsonFile(Users users) {

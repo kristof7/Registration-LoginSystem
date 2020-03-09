@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "name": "DeveloperTester",
+      "surName": "Architect",
+      "phoneNumber": "555234377",
+      "email": "email@gmail.com",
+      "password": "111"
+    },
+    {
+      "name": "TestUser",
+      "surName": "Testowski",
+      "phoneNumber": "230972972",
+      "email": "mail@gmail.com",
+      "password": "password"
+    }
+  ]
+}

@@ -1,32 +1,29 @@
 package accountAccess;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import menu.Menu;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class RegistrationService extends User {
 
     public static void registration() throws IOException {
 
-        User user = new User();
-
         System.out.println("\n" + "CREATE AN ACCOUNT" + "\n");
         System.out.println("To register, fill in the fields below:");
         System.out.println("----------------------------------------");
 
-        RegistrationService registrationService = new RegistrationService();
-        registrationService.registry(user);
+        User user = new User();
+        userRegistration(user);
     }
 
-    public void registry(User user) throws IOException {
-        Users users = JsonConverter.readUsersJsonFile();
+    public static void userRegistration(User user) throws IOException {
+        Users users = JsonConverterUsers.readUsersJsonFile();
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner;
 
         boolean isRegistrationValid = true;
-        boolean isReturn = false;
+        boolean isReturn;
         int choose = 1;
         do {
             Registration registration = new Registration();
@@ -35,9 +32,9 @@ public class RegistrationService extends User {
             System.out.println("1 First name: " + user.getName());
             System.out.println("2 Last name: " + user.getLastName());
             System.out.println("3 Phone number: " + user.getPhoneNumber());
-            System.out.println("4 Email: " + user.getEmail());
+            System.out.println("4 Email(used to login): " + user.getEmail());
             System.out.println("5 Password: " + user.getPassword());
-            System.out.println("6 Save registration");
+            System.out.println("6 Save");
             System.out.println("7 Exit");
             do {
                 try {
@@ -45,7 +42,7 @@ public class RegistrationService extends User {
                     choose = scanner.nextInt();
                     isReturn = false;
                 } catch (Exception e) {
-                    System.out.println("Not valid value, try again: " + e.getMessage());
+                    System.out.println("Wrong value");
                     isReturn = true;
                 }
             } while (isReturn);
@@ -53,19 +50,19 @@ public class RegistrationService extends User {
             switch (choose) {
                 case 1:
                     registration.userSetName(user);
-                    registry(user);
+                    userRegistration(user);
                 case 2:
                     registration.userSetLastName(user);
-                    registry(user);
+                    userRegistration(user);
                 case 3:
                     registration.userSetPhoneNumber(user);
-                    registry(user);
+                    userRegistration(user);
                 case 4:
                     registration.userSetEmail(user);
-                    registry(user);
+                    userRegistration(user);
                 case 5:
                     registration.userSetPassword(user);
-                    registry(user);
+                    userRegistration(user);
                 case 6:
                     scanner = new Scanner(System.in);
                     System.out.println("Your account:");
@@ -77,7 +74,7 @@ public class RegistrationService extends User {
 
                     if (isCorrect.equals("y") || isCorrect.equals("Y")) {
                         users.add(user);
-                        JsonConverter.saveUsersToJsonFile(users);
+                        JsonConverterUsers.saveUsersToJsonFile(users);
 
                         System.out.println("Number of users: " + users.getUsers().size());
                         System.out.println("Thank you, your account has been registered :)");
@@ -88,14 +85,15 @@ public class RegistrationService extends User {
                             RegistrationService.registration();
                         }
                     } else if (isCorrect.equals("n") || isCorrect.equals("N")) {
-                        isReturn = true;
                         isRegistrationValid = false;
-                        registry(user);
+                        userRegistration(user);
                     }
                 case 7:
-                    break;
+
             }
 
         } while (!isRegistrationValid);
+        Menu.showMainMenu();
     }
+
 }
