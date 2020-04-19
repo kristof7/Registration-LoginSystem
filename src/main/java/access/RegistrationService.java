@@ -1,4 +1,4 @@
-package accountAccess;
+package access;
 
 import menu.Menu;
 
@@ -14,6 +14,7 @@ public class RegistrationService extends User {
         System.out.println("----------------------------------------");
 
         User user = new User();
+        AdminRegistrationService.adminRegistration();
         userRegistration(user);
     }
 
@@ -29,10 +30,10 @@ public class RegistrationService extends User {
             Registration registration = new Registration();
 
             System.out.println("Choose number: ");
-            System.out.println("1 First name: " + user.getName());
+            System.out.println("1 First name(is also your login): " + user.getName());
             System.out.println("2 Last name: " + user.getLastName());
             System.out.println("3 Phone number: " + user.getPhoneNumber());
-            System.out.println("4 Email(used to login): " + user.getEmail());
+            System.out.println("4 Email:" + user.getEmail());
             System.out.println("5 Password: " + user.getPassword());
             System.out.println("6 Save");
             System.out.println("7 Exit");

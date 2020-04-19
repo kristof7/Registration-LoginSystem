@@ -1,4 +1,4 @@
-package accountAccess;
+package access;
 
 public class Check {
     public static boolean checkEmail(String email) {

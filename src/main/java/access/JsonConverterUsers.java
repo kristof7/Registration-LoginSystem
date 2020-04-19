@@ -1,4 +1,4 @@
-package accountAccess;
+package access;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -1,4 +1,4 @@
-package accountAccess;
+package access;
 
 public class User {
 

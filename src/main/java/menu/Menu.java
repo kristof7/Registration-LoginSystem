@@ -1,7 +1,7 @@
 package menu;
 
-import accountAccess.LoginService;
-import accountAccess.RegistrationService;
+import access.LoginService;
+import access.RegistrationService;
 
 import java.io.IOException;
 import java.util.Scanner;

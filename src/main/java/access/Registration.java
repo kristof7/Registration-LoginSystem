@@ -1,11 +1,10 @@
-package accountAccess;
+package access;
 
 import java.util.Scanner;
 
 public class Registration {
     Scanner scanner = new Scanner(System.in);
     private boolean isTrue = true;
-    private String isYes = "";
 
     // ----------------- Registration methods -----------------
     public void userSetName(User user) {
@@ -18,14 +17,7 @@ public class Registration {
                 user.setName(name);
                 System.out.println(user);
                 System.out.println("Your name is: " + name);
-                System.out.println("Is it correct? (y/n)");
                 System.out.println("----------------------------------------");
-                isYes = scanner.nextLine();
-                if (isYes.equals("n")) {
-                    isTrue = false;
-                } else if (isYes.equals("y") || isYes.equals("Y")) {
-                    isTrue = true;
-                } else isTrue = false;
             } catch (Exception e) {
                 System.out.println("its not valid value");
                 isTrue = false;
@@ -42,14 +34,7 @@ public class Registration {
                 user.setLastName(lastName);
                 System.out.println(user);
                 System.out.println("Your last name is: " + lastName);
-                System.out.println("Is it correct? (y/n)");
                 System.out.println("----------------------------------------");
-                isYes = scanner.nextLine();
-                if (isYes.equals("n")) {
-                    isTrue = false;
-                } else if (isYes.equals("y") || isYes.equals("Y")) {
-                    isTrue = true;
-                } else isTrue = false;
             } catch (Exception e) {
                 System.out.println("its not valid value");
                 isTrue = false;
@@ -66,14 +51,7 @@ public class Registration {
                 user.setPhoneNumber(phoneNumber);
                 System.out.println(user);
                 System.out.println("Your phone number is: " + phoneNumber);
-                System.out.println("Is it correct? (y/n)");
                 System.out.println("----------------------------------------");
-                isYes = scanner.nextLine();
-                if (isYes.equals("n")) {
-                    isTrue = false;
-                } else if (isYes.equals("y") || isYes.equals("Y")) {
-                    isTrue = true;
-                } else isTrue = false;
             } catch (Exception e) {
                 System.out.println("its not valid value");
                 isTrue = false;
@@ -85,28 +63,23 @@ public class Registration {
         do {
             try {
                 scanner = new Scanner(System.in);
-                System.out.println("Email is also your login");
                 System.out.println("4. Email: ");
                 String email;
                 do {
                     email = scanner.nextLine();
                     if (!Check.checkEmail(email)) {
-                        System.out.println("There is something wrong with your e-mail, remember the writing syntax, try again:");
+                        System.out.println("Your email is not valid, try again: ");
                         isTrue = false;
                     } else isTrue = true;
                 } while (!isTrue);
                 user.setEmail(email);
                 System.out.println(user);
                 System.out.println("Your email is: " + email);
-                System.out.println("Is it correct? (y/n)");
                 System.out.println("----------------------------------------");
-                isYes = scanner.nextLine();
-                if (isYes.equals("n")) {
-                    isTrue = false;
-                } else if ((isYes.equals("y") || isYes.equals("Y")) && Check.checkEmail(email)) {
+                if (Check.checkEmail(email)) {
                     isTrue = true;
                 } else isTrue = false;
-                System.out.println("Wrong email");
+                System.out.println("Email is not valid");
             } catch (Exception e) {
                 System.out.println("its not valid value");
                 isTrue = false;
@@ -123,14 +96,7 @@ public class Registration {
                 user.setPassword(password);
                 System.out.println(user);
                 System.out.println("Your password is: " + password);
-                System.out.println("Is it correct? (y/n)");
                 System.out.println("----------------------------------------");
-                isYes = scanner.nextLine();
-                if (isYes.equals("n")) {
-                    isTrue = false;
-                } else if (isYes.equals("y") || isYes.equals("Y")) {
-                    isTrue = true;
-                } else isTrue = false;
             } catch (Exception e) {
                 System.out.println("its not valid value");
                 isTrue = false;

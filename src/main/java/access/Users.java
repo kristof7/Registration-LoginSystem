@@ -1,4 +1,4 @@
-package accountAccess;
+package access;
 
 import java.util.ArrayList;
 import java.util.List;
